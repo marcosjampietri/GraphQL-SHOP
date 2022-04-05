@@ -9,7 +9,11 @@ export const REGISTER_USER_MUTATION = gql`
         email
         orders
         addresses {
+          fullname
           street
+          city
+          postcode
+          country
         }
       }
     }
@@ -24,7 +28,11 @@ export const LOGIN_USER_MUTATION = gql`
         email
         level
         addresses {
+          fullname
           street
+          city
+          postcode
+          country
         }
         orders
       }
