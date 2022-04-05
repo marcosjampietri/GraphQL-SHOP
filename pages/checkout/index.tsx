@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import Shipping from "./nonguest";
 import Payment from "./payment";
@@ -18,6 +19,7 @@ import { AppState, useTypedSelector } from "../../store/__rootReducer";
 
 const Checkout: NextPage = () => {
     const dispatch = useDispatch();
+    const router = useRouter();
 
     const { Step } = useTypedSelector((state: AppState) => state.step);
     const { loading, data } = useQuery(GET_LOGGED_USER_QUERY);
@@ -38,7 +40,7 @@ const Checkout: NextPage = () => {
         leave: { transform: `translate3d(0vw, ${dir}100vh,0)`, opacity: 0 },
     });
 
-    if (!loggedUser) return <div>Loading</div>;
+    if (!loggedUser) return router.push(`/`);
 
     return (
         loggedUser && (

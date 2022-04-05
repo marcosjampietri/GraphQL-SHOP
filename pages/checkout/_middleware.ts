@@ -7,13 +7,16 @@ export default async function Middleware(req: NextRequest) {
     console.log(`log do auth token: ${token} e req.nextUrl ${pathname}`)
     // console.log(red)
     // return NextResponse.next()
-
-    try {
-        // jwt.verify(token, <Secret>process.env.JWT_TOKEN_SECRET)
-        if (token) return NextResponse.next()
-    } catch {
+    if (token !== undefined) {
+        return NextResponse.next()
+    } else {
         return NextResponse.redirect(`/signIU`)
-        // return NextResponse.redirect(`/signIU?red=${pathname}`)
-        // return NextResponse.redirect(`/profile/${userInfo._id}`)
     }
+    // try {
+    //     jwt.verify(token, <Secret>process.env.JWT_TOKEN_SECRET)
+    // } catch {
+    //     return NextResponse.redirect(`/signIU`)
+    //     // return NextResponse.redirect(`/signIU?red=${pathname}`)
+    //     // return NextResponse.redirect(`/profile/${userInfo._id}`)
+    // }
 }
