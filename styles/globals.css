@@ -1,16 +1,71 @@
+@font-face {
+    font-family: "Galano Grotesque";
+    src: url("/fonts/GalanoGrotesque-Regular.eot");
+    src: url("/fonts/GalanoGrotesque-Regular.eot?#iefix")
+            format("embedded-opentype"),
+        url("/fonts/GalanoGrotesque-Regular.woff2") format("woff2"),
+        url("/fonts/GalanoGrotesque-Regular.woff") format("woff"),
+        url("/fonts/GalanoGrotesque-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: "Galano Grotesque";
+    src: url("/fonts/GalanoGrotesque-SemiBold.eot");
+    src: url("/fonts/GalanoGrotesque-SemiBold.eot?#iefix")
+            format("embedded-opentype"),
+        url("/fonts/GalanoGrotesque-SemiBold.woff2") format("woff2"),
+        url("/fonts/GalanoGrotesque-SemiBold.woff") format("woff"),
+        url("/fonts/GalanoGrotesque-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Galano Grotesque";
+    src: url("/fonts/GalanoGrotesque-Bold.eot");
+    src: url("/fonts/GalanoGrotesque-Bold.eot?#iefix")
+            format("embedded-opentype"),
+        url("/fonts/GalanoGrotesque-Bold.woff2") format("woff2"),
+        url("/fonts/GalanoGrotesque-Bold.woff") format("woff"),
+        url("/fonts/GalanoGrotesque-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Galano Grotesque";
+    src: url("/fonts/GalanoGrotesque-Light.eot");
+    src: url("/fonts/GalanoGrotesque-Light.eot?#iefix")
+            format("embedded-opentype"),
+        url("/fonts/GalanoGrotesque-Light.woff2") format("woff2"),
+        url("/fonts/GalanoGrotesque-Light.woff") format("woff"),
+        url("/fonts/GalanoGrotesque-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    padding: 0;
+    margin: 0;
+    font-family: "Galano Grotesque", sans-serif;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    border: none;
 }
 
 * {
-  box-sizing: border-box;
+    margin: 0;
+    box-sizing: border-box;
 }

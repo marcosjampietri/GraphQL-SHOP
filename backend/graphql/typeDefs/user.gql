@@ -1,0 +1,61 @@
+type User {
+    _id: ID!
+    token: String
+    name: String
+    email: String!
+    password: String
+    level: String
+    encryptPassword: String
+    validatePassword: String
+    addresses: [Address]
+    orders: [ID!]
+}
+
+input CreateUserType {
+    name: String
+    email: String!
+    password: String!
+}
+
+input LogUserInput {
+    email: String!
+    password: String!
+}
+
+input AddressInput {
+    fullname: String!
+    street: String!
+    city: String!
+    postcode: String!
+    country: String!
+}
+
+type Mutation {
+    createUser(body: CreateUserType!): User
+    logUser(body: LogUserInput!): User
+    addAddress(_id: ID!, body: AddressInput!): User
+    updateUser(_id: ID!, body: CreateUserType!): User
+    deleteUser(_id: ID!): User
+}
+
+type PaginationType {
+    page: Int!
+    pages: Int!
+    count: Int!
+}
+
+type UserEdgesType {
+    edges: [User]
+    pagination: PaginationType!
+}
+
+type Query {
+    readUser(email: String!): User
+    listUser(
+        page: Int
+        limit: Int
+        sortBy: String
+        sortOrder: String
+    ): UserEdgesType
+    searchUser(limit: Int, query: String!, fields: String!): [User]
+}

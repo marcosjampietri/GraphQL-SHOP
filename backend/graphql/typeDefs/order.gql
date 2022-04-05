@@ -1,0 +1,21 @@
+type Item {
+  title: String
+  quantity: Int
+  price: Float
+  image: String
+}
+type Order {
+  _id: ID!
+  user: User
+  orderItems: [Item]
+  paymentMethod: String
+  paymentResult: String
+  itemsPrice: Float
+  shippingPrice: Float
+  taxPrice: Float
+  totalPrice: Float
+  isPaid: Boolean
+  isDelivered: Boolean
+  # paidAt: Date
+  # deliveredAt: Date
+}

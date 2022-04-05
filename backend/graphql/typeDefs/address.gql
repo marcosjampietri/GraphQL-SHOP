@@ -1,0 +1,7 @@
+type Address {
+    fullname: String!
+    street: String!
+    city: String!
+    postcode: String!
+    country: String!
+}

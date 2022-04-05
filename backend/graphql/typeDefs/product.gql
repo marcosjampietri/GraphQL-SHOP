@@ -1,0 +1,48 @@
+type Product {
+    _id: ID!
+    owner: User
+    title: String!
+    image: String
+    description: String
+    price: Float!
+    photos: [String]
+    reviews: [Review]
+}
+
+input InputProductType {
+    # verificar o q é esse type
+    type: String!
+    owner: ID!
+    title: String!
+    description: String!
+    price: Float!
+    photos: [String]!
+}
+
+type Mutation {
+    createProduct(body: InputProductType!): Product
+    updateProduct(_id: ID!, body: InputProductType!): Product
+    deleteProduct(_id: ID!): Product
+}
+
+type PaginationType {
+    page: Int
+    pages: Int
+    count: Int
+}
+
+type ProductEdgesType {
+    edges: [Product]
+    pagination: PaginationType
+}
+
+type Query {
+    readProduct(_id: ID!): Product
+    listProduct(
+        page: Int
+        limit: Int
+        sortBy: String
+        sortOrder: String
+    ): ProductEdgesType
+    searchProduct(limit: Int, query: String!, fields: String!): [Product]
+}
