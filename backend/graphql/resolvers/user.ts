@@ -95,7 +95,7 @@ const Mutation = {
                 sameSite: "lax",
                 maxAge: expiration,
                 secure: process.env.NODE_ENV === "production",
-                domain: 'https://new-shop-tau.vercel.app'
+                domain: 'new-shop-tau.vercel.app'
             });
 
             const result = {
@@ -157,8 +157,8 @@ const Mutation = {
                 httpOnly: true,
                 sameSite: "lax",
                 maxAge: expiration,
-                secure: process.env.NODE_ENV === "production",
-                domain: 'https://new-shop-tau.vercel.app'
+                // secure: process.env.NODE_ENV === "production",
+                domain: 'new-shop-tau.vercel.app'
             });
 
             const result = {
