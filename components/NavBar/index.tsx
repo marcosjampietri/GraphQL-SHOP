@@ -26,7 +26,7 @@ const NavBar = () => {
 
                     {/*                     <Burguer /> */}
                     {/*                     <UserIcon /> */}
-                    {data.loggedUser.name && (
+                    {data.loggedUser && (
                         <div>HELLO, {data.loggedUser.name}</div>
                     )}
                     <CartIcon />

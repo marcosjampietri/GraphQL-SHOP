@@ -65,14 +65,8 @@ export interface loggedUser {
     orders: []
 
 }
-const userInitialValue: loggedUser = {
-    _id: '',
-    name: '',
-    email: "",
-    addresses: [],
-    orders: []
-}
-export const loggedUser: ReactiveVar<loggedUser> = makeVar<loggedUser>(
+const userInitialValue: loggedUser | null = null
+export const loggedUser: ReactiveVar<loggedUser | null> = makeVar<loggedUser | null>(
     userInitialValue
 );
 

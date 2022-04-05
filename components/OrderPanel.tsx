@@ -25,8 +25,8 @@ const OrderPanel = () => {
 
     const tudao: number = itemsTotal * 1 + 5.99 * 1;
 
-    const activeAddress = loggedUser.addresses.length - 1;
-    const deliverTo = loggedUser.addresses[activeAddress];
+    const activeAddress = loggedUser?.addresses.length - 1;
+    const deliverTo = loggedUser?.addresses[activeAddress];
 
     const toggleCart = useTransition(CartOn, {
         from: { opacity: 0.3, right: "-30vw" },

@@ -94,7 +94,7 @@ const Mutation = {
                 httpOnly: true,
                 sameSite: "lax",
                 maxAge: expiration,
-                secure: process.env.NODE_ENV === "production",
+                // secure: process.env.NODE_ENV === "production",
                 domain: 'new-shop-tau.vercel.app'
             });
 

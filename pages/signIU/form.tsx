@@ -1,22 +1,18 @@
 import { useRouter } from "next/router";
-
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 
-{
-    /* import { useTypedSelector, AppState } from "../../store/__rootReducer"; */
-}
-{
-    /* import { useMutation, NetworkStatus } from "@apollo/client"; */
-}
 import { animated, useTransition, config } from "react-spring";
-import { useLogUser, useCreaUser } from "../../backend/graphql/queries/logUser";
-{
-    /* import { registerAction } from "../../store/actions/authActions"; */
-}
+import {
+    useLogUser,
+    useCreaUser,
+    GET_LOGGED_USER_QUERY,
+} from "../../backend/graphql/queries/logUser";
+import { useQuery } from "@apollo/client";
 import { Field, Label, Submit, Form, Input, Warn, Err } from "./styles";
 import { MdAccountCircle, MdEmail } from "react-icons/md";
 import { HiLockOpen, HiLockClosed } from "react-icons/hi";
@@ -35,18 +31,17 @@ const FormComponent = ({ reg }: any) => {
     {
         /*     const { errorMsg } = useTypedSelector((state: AppState) => state.auth); */
     }
-    {
-        /*     console.log(errorMsg); */
-    }
+
     const error = null;
-    {
-        /* const [createUser, { data, loading }] = useMutation(REGISTER_USER_MUTATION); */
-    }
+
     const { logUser, logData, logLoading } = useLogUser();
     const { createUser, creaData, creaLoading } = useCreaUser();
+    const { loading, data } = useQuery(GET_LOGGED_USER_QUERY);
+    const { loggedUser } = data;
 
-    if (logData || creaData) router.push(`/checkout`);
-    if (creaData) console.log(creaData);
+    useEffect(() => {
+        if (loggedUser) router.push(`/checkout`);
+    }, [loggedUser]);
 
     const validationSchema = Yup.object().shape({
         name: Yup.string().required("Name is required, Mr. X 🤪"),
@@ -115,13 +110,6 @@ const FormComponent = ({ reg }: any) => {
         from: { opacity: 0, height: "0px" },
         enter: { opacity: 1, height: "60px" },
         leave: { opacity: 1, height: "0px" },
-        delay: 0,
-    });
-
-    const onn = useTransition(reg, {
-        from: { opacity: 0 },
-        enter: { opacity: 1 },
-        leave: { opacity: 0 },
         delay: 0,
     });
 
