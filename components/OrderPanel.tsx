@@ -114,7 +114,7 @@ const OrderPanel = () => {
                                 <h5>£{tudao}</h5>
                             </Row>
                         </Totals>
-                        <NextLink href="/checkout">
+                        <NextLink href="/signIU">
                             <a
                                 onClick={() => {
                                     const timeout = setTimeout(() => {
