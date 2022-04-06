@@ -92,9 +92,9 @@ const Mutation = {
 
             ctx.cookies.set("auth-token", token, {
                 httpOnly: true,
-                sameSite: "none",
+                sameSite: "lax",
                 maxAge: expiration,
-                secure: true,
+                // secure: process.env.NODE_ENV === "production",
                 domain: 'new-shop-tau.vercel.app'
             });
 
