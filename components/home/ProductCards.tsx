@@ -72,6 +72,7 @@ const Cards = () => {
                                     <button
                                         onClick={() => {
                                             dispatch(addToBasket(product));
+                                            dispatch(getTotals());
                                         }}
                                     >
                                         ADD TO CART
