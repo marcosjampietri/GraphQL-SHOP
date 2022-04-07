@@ -90,7 +90,7 @@ const Mutation = {
                 }
             );
 
-            ctx.cookies.set("auth-token", token, {
+            await ctx.cookies.set("auth-token", token, {
                 httpOnly: true,
                 sameSite: "lax",
                 maxAge: expiration,
@@ -153,7 +153,7 @@ const Mutation = {
                 }
             );
 
-            ctx.cookies.set("auth-token", token, {
+            await ctx.cookies.set("auth-token", token, {
                 httpOnly: true,
                 sameSite: "lax",
                 maxAge: expiration,
