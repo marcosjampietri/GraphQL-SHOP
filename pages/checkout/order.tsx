@@ -28,7 +28,7 @@ const Order = () => {
     const tudao: number = itemsTotal * 1.2 + 1 * 5.99;
 
     const { activeAddress } = useTypedSelector((state: AppState) => state.cart);
-    const deliverTo = loggedUser.addresses[activeAddress];
+    const deliverTo = loggedUser?.addresses[activeAddress];
 
     return (
         <Section>
