@@ -24,6 +24,7 @@ const Checkout: NextPage = () => {
 
     const { Step } = useTypedSelector((state: AppState) => state.step);
     const { loading, data } = useQuery(GET_LOGGED_USER_QUERY);
+
     useEffect(() => {
         console.log(data);
     }, [data]);

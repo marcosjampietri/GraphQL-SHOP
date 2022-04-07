@@ -1,7 +1,10 @@
 import type { NextPage } from "next";
+import { useEffect } from "react";
 import Head from "next/head";
 import ProductsCards from "../components/home/ProductCards";
 import Hero from "../components/home/Hero";
+import { useQuery } from "@apollo/client";
+import { GET_LOGGED_USER_QUERY } from "../backend/graphql/queries/logUser";
 
 {
     /* import { useQuery, gql } from "@apollo/client"; */
@@ -14,6 +17,12 @@ const Home: NextPage = () => {
     {
         /*     const { loading, error, data } = useQuery(GET_LOGGED_USER_QUERY); */
     }
+
+    const { loading, data } = useQuery(GET_LOGGED_USER_QUERY);
+
+    useEffect(() => {
+        console.log(data);
+    }, [data]);
 
     return (
         <div>

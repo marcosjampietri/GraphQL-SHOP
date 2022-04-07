@@ -42,7 +42,6 @@ const Shipping = () => {
     const loqate = process.env.LOQATE!;
 
     const { loading, error, data } = useQuery(GET_LOGGED_USER_QUERY);
-
     useEffect(() => {
         console.log(data);
     }, [data]);
@@ -51,7 +50,7 @@ const Shipping = () => {
     const [editSubmission, seteditSubmission] = useState(true);
 
     useEffect(() => {
-        if (data.loggedUser?.addresses.length > 0) seteditSubmission(false);
+        if (data.loggedUser?.addresses?.length > 0) seteditSubmission(false);
     }, [data]);
 
     const [inputAddress, setInputAddress] =
