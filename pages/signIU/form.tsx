@@ -37,11 +37,10 @@ const FormComponent = ({ reg }: any) => {
     const { logUser, logData, logLoading } = useLogUser();
     const { createUser, creaData, creaLoading } = useCreaUser();
     const { loading, data } = useQuery(GET_LOGGED_USER_QUERY);
-    const { loggedUser } = data;
 
     useEffect(() => {
-        if (loggedUser) router.push(`/checkout`);
-    }, [loggedUser]);
+        if (!loading && data) router.push(`/checkout`);
+    }, [data, loading]);
 
     const validationSchema = Yup.object().shape({
         name: Yup.string().required("Name is required, Mr. X 🤪"),
@@ -165,8 +164,9 @@ const FormComponent = ({ reg }: any) => {
                                         type="name"
                                         placeholder="João Ninguém"
                                         defaultValue=""
-                                        className={`${errors.name ? "invalid" : ""
-                                            }`}
+                                        className={`${
+                                            errors.name ? "invalid" : ""
+                                        }`}
                                     />
                                 </Field>
                             </FieldWrap>
@@ -239,10 +239,11 @@ const FormComponent = ({ reg }: any) => {
                                         type="password"
                                         placeholder="confirm your password"
                                         defaultValue=""
-                                        className={`${errors.confirmPassword
+                                        className={`${
+                                            errors.confirmPassword
                                                 ? "invalid"
                                                 : ""
-                                            }`}
+                                        }`}
                                     />
                                 </Field>
                             </FieldWrap>
@@ -275,10 +276,11 @@ const FormComponent = ({ reg }: any) => {
                                                 {...register("acceptTerms")}
                                                 type="checkbox"
                                                 id="acceptTerms"
-                                                className={`${errors.acceptTerms
+                                                className={`${
+                                                    errors.acceptTerms
                                                         ? "invalid"
                                                         : ""
-                                                    }`}
+                                                }`}
                                             />
                                             {error ? (
                                                 <Err>

@@ -24,7 +24,6 @@ const Checkout: NextPage = () => {
 
     const { Step } = useTypedSelector((state: AppState) => state.step);
     const { loading, data } = useQuery(GET_LOGGED_USER_QUERY);
-    const { loggedUser } = data;
 
     const stepComponent = [
         <Shipping key="1" />,
@@ -41,7 +40,14 @@ const Checkout: NextPage = () => {
         leave: { transform: `translate3d(0vw, ${dir}100vh,0)`, opacity: 0 },
     });
 
-    return loggedUser ? (
+    if (loading)
+        return (
+            <Main>
+                <div>Loading</div>
+            </Main>
+        );
+
+    return data ? (
         <div>
             <Head>
                 <title>Checkout Page</title>
