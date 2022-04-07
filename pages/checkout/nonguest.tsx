@@ -50,7 +50,7 @@ const Shipping = () => {
     const [editSubmission, seteditSubmission] = useState(true);
 
     useEffect(() => {
-        if (loggedUser.addresses.length > 0) seteditSubmission(false);
+        if (loggedUser.addresses?.length > 0) seteditSubmission(false);
     }, [loggedUser]);
 
     const [inputAddress, setInputAddress] =
@@ -86,7 +86,7 @@ const Shipping = () => {
             });
             seteditSubmission(false);
             dispatch(stepRvAction());
-            dispatch(setActiveAdress(loggedUser?.addresses.length));
+            dispatch(setActiveAdress(loggedUser?.addresses?.length));
         } catch (err) {
             alert("something wrong is not right");
         }
@@ -138,7 +138,7 @@ const Shipping = () => {
                     </AddWrap>
                 )}
 
-                {loggedUser.addresses.length > 0 && !editSubmission && (
+                {loggedUser.addresses?.length > 0 && !editSubmission && (
                     <Addresses>
                         {loggedUser.addresses?.map(
                             (item: any, index: number) => (
