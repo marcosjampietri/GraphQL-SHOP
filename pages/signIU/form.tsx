@@ -41,7 +41,7 @@ const FormComponent = ({ reg }: any) => {
 
     useEffect(() => {
         if (loggedUser) router.push(`/checkout`);
-    }, [loggedUser]);
+    });
 
     const validationSchema = Yup.object().shape({
         name: Yup.string().required("Name is required, Mr. X 🤪"),
@@ -165,9 +165,8 @@ const FormComponent = ({ reg }: any) => {
                                         type="name"
                                         placeholder="João Ninguém"
                                         defaultValue=""
-                                        className={`${
-                                            errors.name ? "invalid" : ""
-                                        }`}
+                                        className={`${errors.name ? "invalid" : ""
+                                            }`}
                                     />
                                 </Field>
                             </FieldWrap>
@@ -240,11 +239,10 @@ const FormComponent = ({ reg }: any) => {
                                         type="password"
                                         placeholder="confirm your password"
                                         defaultValue=""
-                                        className={`${
-                                            errors.confirmPassword
+                                        className={`${errors.confirmPassword
                                                 ? "invalid"
                                                 : ""
-                                        }`}
+                                            }`}
                                     />
                                 </Field>
                             </FieldWrap>
@@ -277,11 +275,10 @@ const FormComponent = ({ reg }: any) => {
                                                 {...register("acceptTerms")}
                                                 type="checkbox"
                                                 id="acceptTerms"
-                                                className={`${
-                                                    errors.acceptTerms
+                                                className={`${errors.acceptTerms
                                                         ? "invalid"
                                                         : ""
-                                                }`}
+                                                    }`}
                                             />
                                             {error ? (
                                                 <Err>
