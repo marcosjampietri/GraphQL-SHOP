@@ -41,7 +41,7 @@ const FormComponent = ({ reg }: any) => {
 
     useEffect(() => {
         if (loggedUser) router.push(`/checkout`);
-    });
+    }, [loggedUser]);
 
     const validationSchema = Yup.object().shape({
         name: Yup.string().required("Name is required, Mr. X 🤪"),
