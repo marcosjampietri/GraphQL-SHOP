@@ -49,9 +49,12 @@ const Shipping = () => {
     const { addAddress, loading: loadingAddress } = useAddAddress();
     const [editSubmission, seteditSubmission] = useState(true);
 
-    useEffect(() => {
-        if (loggedUser.addresses?.length > 0) seteditSubmission(false);
-    }, [loggedUser]);
+    if (data.loggedUser?.addresses) {
+        useEffect(() => {
+            if (data.loggedUser?.addresses?.length > 0)
+                seteditSubmission(false);
+        }, [data]);
+    }
 
     const [inputAddress, setInputAddress] =
         useState<inputAddressType | null>(null);
@@ -80,13 +83,13 @@ const Shipping = () => {
             const { fullname, street, city, postcode, country } = userAddress;
             addAddress({
                 variables: {
-                    id: loggedUser._id,
+                    id: data.loggedUser?._id,
                     body: { fullname, street, city, postcode, country },
                 },
             });
             seteditSubmission(false);
             dispatch(stepRvAction());
-            dispatch(setActiveAdress(loggedUser?.addresses?.length));
+            dispatch(setActiveAdress(data.loggedUser?.addresses?.length));
         } catch (err) {
             alert("something wrong is not right");
         }
@@ -115,10 +118,8 @@ const Shipping = () => {
         );
     };
 
-    if (!loggedUser || loading) router.push(`/signIU`);
-
     return (
-        loggedUser && (
+        data.loggedUser && (
             <Margin>
                 {!inputAddress && editSubmission && (
                     <AddWrap>
@@ -138,9 +139,9 @@ const Shipping = () => {
                     </AddWrap>
                 )}
 
-                {loggedUser.addresses?.length > 0 && !editSubmission && (
+                {data.loggedUser.addresses?.length > 0 && !editSubmission && (
                     <Addresses>
-                        {loggedUser.addresses?.map(
+                        {data.loggedUser.addresses?.map(
                             (item: any, index: number) => (
                                 <Address
                                     key={index}
@@ -192,7 +193,8 @@ const Shipping = () => {
                             )
                         )}
 
-                        {loggedUser && loggedUser.addresses?.length > 0 ? (
+                        {data.loggedUser &&
+                            data.loggedUser.addresses?.length > 0 ? (
                             <NewAd>
                                 {editSubmission ? (
                                     <button
@@ -235,7 +237,9 @@ const Shipping = () => {
                                 {...register("fullname")}
                                 type="fullname"
                                 placeholder="João Ninguém"
-                                defaultValue={loggedUser ? loggedUser.name : ""}
+                                defaultValue={
+                                    data.loggedUser ? data.loggedUser.name : ""
+                                }
                                 className={`${errors.fullname ? "invalid" : ""
                                     }`}
                             />
