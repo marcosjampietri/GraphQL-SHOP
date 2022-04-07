@@ -46,6 +46,8 @@ const Query = {
     },
 };
 
+const cookieDomain = `${process.env.NODE_ENV === "production" ?
+    'new-shop-tau.vercel.app' : 'localhost'}`
 
 const Mutation = {
     async createUser(
@@ -93,8 +95,8 @@ const Mutation = {
                 httpOnly: true,
                 sameSite: "lax",
                 maxAge: 60 * 60 * 24 * 1,
-                secure: process.env.NODE_ENV === "production",
-                // domain: 'new-shop-tau.vercel.app'
+                // secure: process.env.NODE_ENV === "production",
+                domain: cookieDomain
             });
 
             const result = {
@@ -157,7 +159,7 @@ const Mutation = {
                 sameSite: "lax",
                 maxAge: 60 * 60 * 24 * 1,
                 // secure: process.env.NODE_ENV === "production",
-                // domain: 'new-shop-tau.vercel.app'
+                domain: cookieDomain
             });
 
             const result = {

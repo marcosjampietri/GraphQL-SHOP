@@ -41,7 +41,7 @@ const Checkout: NextPage = () => {
         leave: { transform: `translate3d(0vw, ${dir}100vh,0)`, opacity: 0 },
     });
 
-    if (!loggedUser) return router.push(`/`);
+    if (!loggedUser) return router.push(`/?red=nouser`);
 
     return (
         loggedUser && (
@@ -81,9 +81,6 @@ const Checkout: NextPage = () => {
                             {stepComponent[activeStep]}
                         </StepCanva>
                     ))}
-                    {/* <Shipping />
-                <Order />
-                <Payment /> */}
                 </Main>
             </div>
         )

@@ -38,12 +38,10 @@ const FormComponent = ({ reg }: any) => {
     const { createUser, creaData, creaLoading } = useCreaUser();
     const { loading, data } = useQuery(GET_LOGGED_USER_QUERY);
     const { loggedUser } = data;
-    {
-        /* 
+
     useEffect(() => {
-        if (logData || creaData) router.push(`/checkout`);
-    }, [logData, creaData]); */
-    }
+        if (loggedUser) router.push(`/checkout`);
+    }, [loggedUser]);
 
     const validationSchema = Yup.object().shape({
         name: Yup.string().required("Name is required, Mr. X 🤪"),
@@ -89,10 +87,10 @@ const FormComponent = ({ reg }: any) => {
     const submitHandler: SubmitHandler<Inputs> = async (userData) => {
         try {
             const { name, email, password } = userData;
+            console.log(name, email);
             await createUser({
                 variables: { body: { name, email, password } },
             });
-            router.push(`/checkout`);
         } catch (err) {
             alert("something wrong is not right");
         }
@@ -101,10 +99,10 @@ const FormComponent = ({ reg }: any) => {
     const submitHandlerLogin: SubmitHandler<Inputs> = async (userData) => {
         try {
             const { email, password } = userData;
+            console.log(email);
             await logUser({
                 variables: { body: { email, password } },
             });
-            router.push(`/checkout`);
         } catch (err) {
             alert("something wrong is not right");
         }
@@ -167,8 +165,9 @@ const FormComponent = ({ reg }: any) => {
                                         type="name"
                                         placeholder="João Ninguém"
                                         defaultValue=""
-                                        className={`${errors.name ? "invalid" : ""
-                                            }`}
+                                        className={`${
+                                            errors.name ? "invalid" : ""
+                                        }`}
                                     />
                                 </Field>
                             </FieldWrap>
@@ -241,10 +240,11 @@ const FormComponent = ({ reg }: any) => {
                                         type="password"
                                         placeholder="confirm your password"
                                         defaultValue=""
-                                        className={`${errors.confirmPassword
+                                        className={`${
+                                            errors.confirmPassword
                                                 ? "invalid"
                                                 : ""
-                                            }`}
+                                        }`}
                                     />
                                 </Field>
                             </FieldWrap>
@@ -277,10 +277,11 @@ const FormComponent = ({ reg }: any) => {
                                                 {...register("acceptTerms")}
                                                 type="checkbox"
                                                 id="acceptTerms"
-                                                className={`${errors.acceptTerms
+                                                className={`${
+                                                    errors.acceptTerms
                                                         ? "invalid"
                                                         : ""
-                                                    }`}
+                                                }`}
                                             />
                                             {error ? (
                                                 <Err>

@@ -4,7 +4,7 @@ import jwt, { Secret } from "jsonwebtoken";
 export default async function Middleware(req: NextRequest) {
     const token = req.cookies['auth-token']
     const { pathname } = req.nextUrl
-    console.log(`log do auth token: ${token} e req.nextUrl ${pathname} e secret ${process.env["JWT_TOKEN_SECRET"]}`)
+    console.log(`log do auth token: ${token} e req.nextUrl ${pathname}`)
     // console.log(red)
 
     try {
