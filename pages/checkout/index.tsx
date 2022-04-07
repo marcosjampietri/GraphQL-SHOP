@@ -24,6 +24,9 @@ const Checkout: NextPage = () => {
 
     const { Step } = useTypedSelector((state: AppState) => state.step);
     const { loading, data } = useQuery(GET_LOGGED_USER_QUERY);
+    useEffect(() => {
+        console.log(data);
+    }, [data]);
 
     const stepComponent = [
         <Shipping key="1" />,
@@ -47,7 +50,7 @@ const Checkout: NextPage = () => {
             </Main>
         );
 
-    return data ? (
+    return data.loggedUser ? (
         <div>
             <Head>
                 <title>Checkout Page</title>

@@ -42,15 +42,16 @@ const Shipping = () => {
     const loqate = process.env.LOQATE!;
 
     const { loading, error, data } = useQuery(GET_LOGGED_USER_QUERY);
-    const { loggedUser } = data;
 
-    const mockInput = {};
+    useEffect(() => {
+        console.log(data);
+    }, [data]);
 
     const { addAddress, loading: loadingAddress } = useAddAddress();
     const [editSubmission, seteditSubmission] = useState(true);
 
     useEffect(() => {
-        if (data.loggedUser?.addresses?.length > 0) seteditSubmission(false);
+        if (data.loggedUser?.addresses.length > 0) seteditSubmission(false);
     }, [data]);
 
     const [inputAddress, setInputAddress] =
@@ -143,9 +144,8 @@ const Shipping = () => {
                                 <Address
                                     key={index}
                                     htmlFor={`#${index}`}
-                                    className={`${
-                                        activeAddress == index ? "active" : null
-                                    }`}
+                                    className={`${activeAddress == index ? "active" : null
+                                        }`}
                                 >
                                     <div>
                                         <h4>Receiver: </h4>
@@ -182,18 +182,17 @@ const Shipping = () => {
                                                 dispatch(stepRvAction());
                                             }}
                                         />
-                                        <div>{`${
-                                            activeAddress == index
+                                        <div>{`${activeAddress == index
                                                 ? "SELECTED"
                                                 : "CHANGE TO THIS"
-                                        }`}</div>
+                                            }`}</div>
                                     </Select>
                                 </Address>
                             )
                         )}
 
                         {data.loggedUser &&
-                        data.loggedUser.addresses?.length > 0 ? (
+                            data.loggedUser.addresses?.length > 0 ? (
                             <NewAd>
                                 {editSubmission ? (
                                     <button
@@ -239,9 +238,8 @@ const Shipping = () => {
                                 defaultValue={
                                     data.loggedUser ? data.loggedUser.name : ""
                                 }
-                                className={`${
-                                    errors.fullname ? "invalid" : ""
-                                }`}
+                                className={`${errors.fullname ? "invalid" : ""
+                                    }`}
                             />
                         </Field>
                         <ErrorWrap>
@@ -304,9 +302,8 @@ const Shipping = () => {
                                 type="postcode"
                                 placeholder="postcode"
                                 defaultValue={`${inputAddress.PostalCode}`}
-                                className={`${
-                                    errors.postcode ? "invalid" : ""
-                                }`}
+                                className={`${errors.postcode ? "invalid" : ""
+                                    }`}
                             />
                         </Field>
                         <ErrorWrap>
@@ -326,9 +323,8 @@ const Shipping = () => {
                                     type="country"
                                     id="country"
                                     defaultValue={`${inputAddress.CountryName}`}
-                                    className={`${
-                                        errors.country ? "invalid" : ""
-                                    }`}
+                                    className={`${errors.country ? "invalid" : ""
+                                        }`}
                                 />
                                 <Label>country</Label>
                             </label>

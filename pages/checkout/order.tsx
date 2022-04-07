@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
@@ -19,7 +19,9 @@ const Order = () => {
     const router = useRouter();
 
     const { loading, error, data } = useQuery(GET_LOGGED_USER_QUERY);
-    const { loggedUser } = data;
+    useEffect(() => {
+        console.log(data);
+    }, [data]);
     const { yourCart, itemsTotal } = useTypedSelector(
         (state: AppState) => state.cart
     );
@@ -28,7 +30,7 @@ const Order = () => {
     const tudao: number = itemsTotal * 1.2 + 1 * 5.99;
 
     const { activeAddress } = useTypedSelector((state: AppState) => state.cart);
-    const deliverTo = loggedUser?.addresses[activeAddress];
+    const deliverTo = data.loggedUser?.addresses[activeAddress];
 
     return (
         <Section>

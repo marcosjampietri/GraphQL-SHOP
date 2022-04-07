@@ -17,11 +17,10 @@ const Auth = () => {
 
     const { loading, data } = useQuery(GET_LOGGED_USER_QUERY);
 
-    console.log(data);
-
     useEffect(() => {
-        if (!loading && data) router.push(`/checkout`);
-    }, [data, loading]);
+        if (!loading && data.loggedUser) router.push(`/checkout`);
+        console.log(data.loggedUser);
+    }, [data.loggedUser, loading]);
 
     const switchSign = useTransition(register, {
         from: { opacity: 0 },
