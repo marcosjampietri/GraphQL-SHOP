@@ -114,7 +114,7 @@ export const useLogUser = () => {
                 }
                 // console.log(loggedUserData)
                 loggedUser(loggedUserData)
-                // cache.writeQuery({ query: GET_LOGGED_USER_QUERY, data: { loggedUserData } });
+                cache.writeQuery({ query: GET_LOGGED_USER_QUERY, data: { loggedUserData } });
             }
         }
     );
@@ -136,7 +136,7 @@ export const useAddAddress = () => {
                 }
                 // console.log(loggedUserData)
                 loggedUser(loggedUserData)
-                // cache.writeQuery({ query: GET_LOGGED_USER_QUERY, data: { loggedUserData } });
+                cache.writeQuery({ query: GET_LOGGED_USER_QUERY, data: { loggedUserData } });
             }
         }
     );
