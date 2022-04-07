@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -7,12 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 
 import { animated, useTransition, config } from "react-spring";
-import {
-    useLogUser,
-    useCreaUser,
-    GET_LOGGED_USER_QUERY,
-} from "../../backend/graphql/queries/logUser";
-import { useQuery } from "@apollo/client";
+import { useLogUser, useCreaUser } from "../../backend/graphql/queries/logUser";
 import { Field, Label, Submit, Form, Input, Warn, Err } from "./styles";
 import { MdAccountCircle, MdEmail } from "react-icons/md";
 import { HiLockOpen, HiLockClosed } from "react-icons/hi";
@@ -36,11 +30,6 @@ const FormComponent = ({ reg }: any) => {
 
     const { logUser, logData, logLoading } = useLogUser();
     const { createUser, creaData, creaLoading } = useCreaUser();
-    const { loading, data } = useQuery(GET_LOGGED_USER_QUERY);
-
-    useEffect(() => {
-        if (!loading && data) router.push(`/checkout`);
-    }, [data, loading]);
 
     const validationSchema = Yup.object().shape({
         name: Yup.string().required("Name is required, Mr. X 🤪"),
@@ -164,9 +153,8 @@ const FormComponent = ({ reg }: any) => {
                                         type="name"
                                         placeholder="João Ninguém"
                                         defaultValue=""
-                                        className={`${
-                                            errors.name ? "invalid" : ""
-                                        }`}
+                                        className={`${errors.name ? "invalid" : ""
+                                            }`}
                                     />
                                 </Field>
                             </FieldWrap>
@@ -239,11 +227,10 @@ const FormComponent = ({ reg }: any) => {
                                         type="password"
                                         placeholder="confirm your password"
                                         defaultValue=""
-                                        className={`${
-                                            errors.confirmPassword
+                                        className={`${errors.confirmPassword
                                                 ? "invalid"
                                                 : ""
-                                        }`}
+                                            }`}
                                     />
                                 </Field>
                             </FieldWrap>
@@ -276,11 +263,10 @@ const FormComponent = ({ reg }: any) => {
                                                 {...register("acceptTerms")}
                                                 type="checkbox"
                                                 id="acceptTerms"
-                                                className={`${
-                                                    errors.acceptTerms
+                                                className={`${errors.acceptTerms
                                                         ? "invalid"
                                                         : ""
-                                                }`}
+                                                    }`}
                                             />
                                             {error ? (
                                                 <Err>

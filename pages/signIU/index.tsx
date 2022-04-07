@@ -4,11 +4,9 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { animated, useSpring, useTransition, config } from "react-spring";
 
-import { LOGIN_USER_MUTATION } from "../../backend/graphql/queries/logUser";
-import { useMutation, NetworkStatus } from "@apollo/client";
-import Register from "./register";
-import Login from "./login";
+import { useQuery, NetworkStatus } from "@apollo/client";
 import Form from "./form";
+import { GET_LOGGED_USER_QUERY } from "../../backend/graphql/queries/logUser";
 
 const Auth = () => {
     const router = useRouter();
@@ -17,8 +15,13 @@ const Auth = () => {
 
     const { red } = router.query;
 
-    const [logUser, { data, loading, error }] =
-        useMutation(LOGIN_USER_MUTATION);
+    const { loading, data } = useQuery(GET_LOGGED_USER_QUERY);
+
+    console.log(data);
+
+    useEffect(() => {
+        if (!loading && data) router.push(`/checkout`);
+    }, [data, loading]);
 
     const switchSign = useTransition(register, {
         from: { opacity: 0 },
