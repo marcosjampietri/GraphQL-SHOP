@@ -117,8 +117,8 @@ const OrderPanel = () => {
                         </Totals>
 
                         <Pay
+                            href="/checkout"
                             onClick={() => {
-                                router.push("/checkout");
                                 const timeout = setTimeout(() => {
                                     dispatch(cartOffAction());
                                 }, 500);
@@ -295,7 +295,7 @@ const ViewBask = styled.div`
     place-items: center;
 `;
 
-const Pay = styled.button`
+const Pay = styled.a`
     position: relative;
 
     margin: 10px auto;

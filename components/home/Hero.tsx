@@ -411,10 +411,7 @@ const Button = styled.button`
     background: hsla(0, 0%, 0%, 0.82);
     border: 1px solid hsla(0, 0%, 100%, 0.9);
     border-radius: 2px;
-    font-size: 1em;
-
-    display: grid;
-    place-items: center;
+    font-size: 1.2em;
 
     svg {
         fill: white;
@@ -422,19 +419,19 @@ const Button = styled.button`
 `;
 const ButtonN = styled(Button)`
     right: 0px;
-    // svg {
-    //     position: relative;
-    //     top: 2px;
-    //     left: 1px;
-    // }
+    svg {
+        position: relative;
+        top: 2px;
+        left: 1px;
+    }
 `;
 const ButtonP = styled(Button)`
     left: 0px;
-    // svg {
-    //     position: relative;
-    //     top: 2px;
-    //     left: -1px;
-    // }
+    svg {
+        position: relative;
+        top: 2px;
+        left: -1px;
+    }
 `;
 
 const TextWrap = styled.div`
