@@ -9,7 +9,7 @@ export default async function Middleware(req: NextRequest) {
 
     try {
         jwt.verify(token, <Secret>process.env["JWT_TOKEN_SECRET"])
-        return NextResponse.next()
+        return NextResponse.redirect(`/checkout`)
     } catch {
         return NextResponse.redirect(`/signIU`)
         // return NextResponse.redirect(`/signIU?red=${pathname}`)
