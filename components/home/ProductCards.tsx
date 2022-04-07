@@ -39,17 +39,17 @@ const Cards = () => {
                 {productsAll.map((product: product, index: number) => (
                     <ProductCard key={index}>
                         <Photo />
-                        <NextLink href={`/product/${product._id}`} passHref>
-                            <Image
-                                src={product.image}
-                                alt={product.title}
-                                width={350}
-                                height={400}
-                                id="pic"
-                                objectFit="cover"
-                                objectPosition="center center"
-                            />
-                        </NextLink>
+                        {/* <NextLink href={`/product/${product._id}`} passHref> */}
+                        <Image
+                            src={product.image}
+                            alt={product.title}
+                            width={350}
+                            height={400}
+                            id="pic"
+                            objectFit="cover"
+                            objectPosition="center center"
+                        />
+                        {/* </NextLink> */}
                         <Photo />
                         {/*                         <Tags>cat1, outras</Tags> */}
                         <Star>

@@ -46,7 +46,6 @@ const Query = {
     },
 };
 
-const expiration = 60 * 60 * 24 * 1;
 
 const Mutation = {
     async createUser(
@@ -86,16 +85,16 @@ const Mutation = {
 
                 {
                     algorithm: "HS256",
-                    expiresIn: expiration,
+                    expiresIn: 60 * 60 * 24 * 1,
                 }
             );
 
             await ctx.cookies.set("auth-token", token, {
                 httpOnly: true,
                 sameSite: "lax",
-                maxAge: expiration,
-                // secure: process.env.NODE_ENV === "production",
-                domain: 'new-shop-tau.vercel.app'
+                maxAge: 60 * 60 * 24 * 1,
+                secure: process.env.NODE_ENV === "production",
+                // domain: 'new-shop-tau.vercel.app'
             });
 
             const result = {
@@ -149,16 +148,16 @@ const Mutation = {
 
                 {
                     algorithm: "HS256",
-                    expiresIn: expiration,
+                    expiresIn: 60 * 60 * 24 * 1,
                 }
             );
 
             await ctx.cookies.set("auth-token", token, {
                 httpOnly: true,
                 sameSite: "lax",
-                maxAge: expiration,
+                maxAge: 60 * 60 * 24 * 1,
                 // secure: process.env.NODE_ENV === "production",
-                domain: 'new-shop-tau.vercel.app'
+                // domain: 'new-shop-tau.vercel.app'
             });
 
             const result = {

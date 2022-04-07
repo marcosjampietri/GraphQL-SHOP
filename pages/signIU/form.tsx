@@ -38,10 +38,12 @@ const FormComponent = ({ reg }: any) => {
     const { createUser, creaData, creaLoading } = useCreaUser();
     const { loading, data } = useQuery(GET_LOGGED_USER_QUERY);
     const { loggedUser } = data;
-
+    {
+        /* 
     useEffect(() => {
-        if (loggedUser) router.push(`/checkout`);
-    }, [loggedUser]);
+        if (logData || creaData) router.push(`/checkout`);
+    }, [logData, creaData]); */
+    }
 
     const validationSchema = Yup.object().shape({
         name: Yup.string().required("Name is required, Mr. X 🤪"),
@@ -87,9 +89,10 @@ const FormComponent = ({ reg }: any) => {
     const submitHandler: SubmitHandler<Inputs> = async (userData) => {
         try {
             const { name, email, password } = userData;
-            createUser({
+            await createUser({
                 variables: { body: { name, email, password } },
             });
+            router.push(`/checkout`);
         } catch (err) {
             alert("something wrong is not right");
         }
@@ -98,9 +101,10 @@ const FormComponent = ({ reg }: any) => {
     const submitHandlerLogin: SubmitHandler<Inputs> = async (userData) => {
         try {
             const { email, password } = userData;
-            logUser({
+            await logUser({
                 variables: { body: { email, password } },
             });
+            router.push(`/checkout`);
         } catch (err) {
             alert("something wrong is not right");
         }

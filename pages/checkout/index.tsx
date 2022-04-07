@@ -26,10 +26,6 @@ const Checkout: NextPage = () => {
     const { loading, data } = useQuery(GET_LOGGED_USER_QUERY);
     const { loggedUser } = data;
 
-    useEffect(() => {
-        if (!loggedUser) router.push(`/`);
-    }, [loggedUser]);
-
     const stepComponent = [
         <Shipping key="1" />,
         <Order key="2" />,
