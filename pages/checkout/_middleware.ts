@@ -8,8 +8,8 @@ export default async function Middleware(req: NextRequest) {
     // console.log(red)
 
     try {
-        jwt.verify(token, <Secret>process.env.JWT_TOKEN_SECRET)
-        return NextResponse.next()
+        jwt.verify(token, <Secret>process.env["JWT_TOKEN_SECRET"])
+        return NextResponse.redirect(`/checkout?par=user`)
     } catch {
         return NextResponse.next()
         // return NextResponse.redirect(`/signIU`)

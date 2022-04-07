@@ -46,8 +46,6 @@ export const getTotals: actionCreator<any> = () => async (
         .reduce((a: any, b: any) => a + b, 0)
         .toFixed(2)
 
-    console.log(itemsTotal)
-
     dispatch({
         type: "GET_TOTALS",
         payload: itemsTotal,

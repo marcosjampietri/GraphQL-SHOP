@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import { useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
@@ -24,6 +25,10 @@ const Checkout: NextPage = () => {
     const { Step } = useTypedSelector((state: AppState) => state.step);
     const { loading, data } = useQuery(GET_LOGGED_USER_QUERY);
     const { loggedUser } = data;
+
+    useEffect(() => {
+        if (!loggedUser) router.push(`/`);
+    }, [loggedUser]);
 
     const stepComponent = [
         <Shipping key="1" />,

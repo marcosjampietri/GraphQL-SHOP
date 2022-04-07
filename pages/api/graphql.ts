@@ -34,9 +34,12 @@ const apolloServer = new ApolloServer({
 const startServer = apolloServer.start()
 
 export default cors(async function handler(req, res) {
-    // res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
     // res.setHeader('Access-Control-Allow-Origin', '*');
     // res.setHeader('Access-Control-Allow-Headers', '*');
+    res.setHeader('Access-Control-Allow-Origin', 'https://new-shop-tau.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,UPDATE,OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
     if (req.method === 'OPTIONS') {
         res.end()
         return false
