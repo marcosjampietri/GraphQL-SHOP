@@ -105,13 +105,7 @@ const CartPage = () => {
                             <h3>£ {itemsTotal}</h3>
                         </Total>
 
-                        <Pay
-                            onClick={() =>
-                                router.push("/checkout", undefined, {
-                                    shallow: true,
-                                })
-                            }
-                        >
+                        <Pay onClick={() => router.push("/checkout")}>
                             GO TO CHECKOUT
                         </Pay>
 

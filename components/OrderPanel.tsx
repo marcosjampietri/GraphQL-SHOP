@@ -118,7 +118,7 @@ const OrderPanel = () => {
 
                         <Pay
                             onClick={() => {
-                                router.prefetch("/checkout");
+                                router.push("/checkout");
                                 const timeout = setTimeout(() => {
                                     dispatch(cartOffAction());
                                 }, 500);
