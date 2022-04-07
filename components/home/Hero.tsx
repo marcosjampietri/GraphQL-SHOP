@@ -95,6 +95,8 @@ const Hero = () => {
     };
 
     const titleTrail = `MEET_THE_ULTIMATE_-ONLINE_SHOPPING_EXPERIENCE`;
+    const titleTrail1 = `MEET_THE_ULTIMATE`;
+    const titleTrail2 = `ONLINE_SHOPPING_EXPERIENCE`;
     const line1 = "Find_Out_How_You_Can_Save_Money_On_Your_Online_Business_By";
     const line2 =
         "Getting_Rid_Of_Shopify_Fees_And_Your_Current_Plataform_Costs";
@@ -124,7 +126,8 @@ const Hero = () => {
 
     const line1Trail = useTrail<trailProps>(line1.length, configs1);
     const line2Trail = useTrail<trailProps>(line2.length, configs1);
-    const tTrail = useTrail<trailProps>(titleTrail.length, configs2);
+    const tTrail1 = useTrail<trailProps>(titleTrail1.length, configs2);
+    const tTrail2 = useTrail<trailProps>(titleTrail2.length, configs2);
 
     return (
         <Section>
@@ -140,7 +143,7 @@ const Hero = () => {
 
             <TextWrap onClick={() => setshow(!show)}>
                 <div>
-                    {tTrail.map(({ y, ...otherProps }, i) => (
+                    {tTrail1.map(({ y, ...otherProps }, i) => (
                         <Title
                             key={i}
                             style={{
@@ -150,8 +153,30 @@ const Hero = () => {
                                 ),
                             }}
                         >
-                            {titleTrail[i] !== "_" ? (
-                                titleTrail[i].replace(/-/g, ``)
+                            {titleTrail1[i] !== "_" ? (
+                                titleTrail1[i].replace(/-/g, ``)
+                            ) : (
+                                <div style={{ color: "transparent" }}>
+                                    &nbsp;
+                                </div>
+                            )}
+                        </Title>
+                    ))}
+                </div>
+                <div>
+                    {tTrail2.map(({ y, ...otherProps }, i) => (
+                        <Title
+                            key={i}
+                            style={{
+                                ...otherProps,
+                                transform: y.to(
+                                    (y: any) => `translate3d(0, ${y}vh, 0)`
+                                ),
+                                marginBottom: "1em",
+                            }}
+                        >
+                            {titleTrail2[i] !== "_" ? (
+                                titleTrail2[i].replace(/-/g, ``)
                             ) : (
                                 <div style={{ color: "transparent" }}>
                                     &nbsp;
@@ -316,7 +341,7 @@ const Carroussel = styled(animated.div)`
 
 const CTAWrap = styled.div`
     position: absolute;
-    bottom: 30vh;
+    bottom: 25vh;
     width: 100vw;
     min-width: 150px;
     height: 10vh;
@@ -348,7 +373,7 @@ const CTA = styled.div`
 
 const Dots = styled.div`
     position: absolute;
-    bottom: 70px;
+    bottom: 80px;
     z-index: 10;
 
     display: flex;
@@ -363,15 +388,16 @@ const Dots = styled.div`
         transform: scale(1);
 
         border-radius: 50%;
-        border: 1px solid hsla(0, 0%, 100%, 1);
+        border: 1px solid hsla(0, 0%, 10%, 1);
         box-shadow: 1px 1px 5px hsla(0, 0%, 0%, 0);
         transition: 0.9s;
     }
     .active {
         transition: 0.07s;
-        transform: scale(1.3);
+        transform: scale(1.5);
 
         background: hsla(0, 0%, 0%, 1);
+        border: 1px solid hsla(0, 0%, 70%, 1);
         box-shadow: 1px 1px 5px hsla(0, 0%, 0%, 0.5);
     }
 `;
@@ -387,33 +413,33 @@ const Button = styled.button`
     border-radius: 2px;
     font-size: 1em;
 
+    display: grid;
+    place-items: center;
+
     svg {
-        position: relative;
-        top: 2px;
-        left: 2px;
         fill: white;
     }
 `;
 const ButtonN = styled(Button)`
     right: 0px;
-    svg {
-        position: relative;
-        top: 2px;
-        left: 1px;
-    }
+    // svg {
+    //     position: relative;
+    //     top: 2px;
+    //     left: 1px;
+    // }
 `;
 const ButtonP = styled(Button)`
     left: 0px;
-    svg {
-        position: relative;
-        top: 2px;
-        left: -1px;
-    }
+    // svg {
+    //     position: relative;
+    //     top: 2px;
+    //     left: -1px;
+    // }
 `;
 
 const TextWrap = styled.div`
     width: 100vw;
-    padding: 10px;
+    padding: 0px 10px 20px;
 
     background: hsla(0, 0%, 100%, 0.58);
     backdrop-filter: blur(10px);
@@ -432,29 +458,26 @@ const TextWrap = styled.div`
     }
 `;
 
-const TextTrail = styled(animated.h1)`
-    // text-shadow: 1px 1px 5px hsla(0, 0%, 0%, 0.3);
-`;
 const Call = styled(animated.h2)`
-    color: hsla(0, 0%, 40%, 1);
-    font-size: clamp(8px, 1.5vw, 16px);
+    color: hsla(0, 0%, 30%, 1);
+    font-size: clamp(8px, 2.2vw, 18px);
     letter-spacing: 0.04em;
-    line-height: 1.5em;
+    line-height: 1.3em;
     font-weight: 200;
 `;
 
 const Title = styled(animated.h1)`
-    height: 2em;
-    max-height: 80px;
+    height: 1em;
+
     color: hsla(0, 0%, 10%, 1);
 
-    font-size: clamp(12px, 2.5vw, 50px);
+    font-size: clamp(18px, 5vw, 45px);
     letter-spacing: 0.15em;
     font-weight: bold;
     line-height: 2em;
 
     ${below.small`
-    font-size: clamp(6px, 2.5vw, 50px);
+    font-size: clamp(12px, 5vw, 50px);
         
     `};
 `;
