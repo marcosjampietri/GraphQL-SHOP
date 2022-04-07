@@ -104,11 +104,17 @@ const CartPage = () => {
                             <h3>Total Price</h3>
                             <h3>£ {itemsTotal}</h3>
                         </Total>
-                        <NextLink href="/checkout">
-                            <a>
-                                <Pay>GO TO CHECKOUT</Pay>
-                            </a>
-                        </NextLink>
+
+                        <Pay
+                            onClick={() =>
+                                router.push("/checkout", undefined, {
+                                    shallow: true,
+                                })
+                            }
+                        >
+                            GO TO CHECKOUT
+                        </Pay>
+
                         <h4> OR </h4>
                         <NextLink href="/" passHref>
                             <Back>CONTINUE SHOPPING MORE ITEMS</Back>
