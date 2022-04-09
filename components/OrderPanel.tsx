@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useRouter } from "next/router";
+
 import NextLink from "next/link";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
@@ -13,7 +13,6 @@ import { FiX } from "react-icons/fi";
 
 const OrderPanel = () => {
     const dispatch = useDispatch();
-    const router = useRouter();
     const ref = useRef(null);
     useOutClick(ref, cartOffAction);
 
@@ -115,19 +114,18 @@ const OrderPanel = () => {
                                 <h5>£{tudao}</h5>
                             </Row>
                         </Totals>
-
-                        <Pay
-                            href="/checkout"
-                            onClick={() => {
-                                const timeout = setTimeout(() => {
-                                    dispatch(cartOffAction());
-                                }, 500);
-                                return () => clearTimeout(timeout);
-                            }}
-                        >
-                            GO TO CHECKOUT
-                        </Pay>
-
+                        <NextLink href="/checkout">
+                            <a
+                                onClick={() => {
+                                    const timeout = setTimeout(() => {
+                                        dispatch(cartOffAction());
+                                    }, 500);
+                                    return () => clearTimeout(timeout);
+                                }}
+                            >
+                                <Pay>GO TO CHECKOUT</Pay>
+                            </a>
+                        </NextLink>
                         {/* <form onSubmit={() => "clicked"}>
                             <Coupon type="text" id="coupon" />
                             <Pay type="submit">APPLY COUPON</Pay>
@@ -295,7 +293,7 @@ const ViewBask = styled.div`
     place-items: center;
 `;
 
-const Pay = styled.a`
+const Pay = styled.button`
     position: relative;
 
     margin: 10px auto;
