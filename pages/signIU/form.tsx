@@ -136,12 +136,14 @@ const FormComponent = ({ reg }: any) => {
                     )
                 )}
                 <Blank /> */}
-                <Submit
-                    type="submit"
-                    className={`${errorsExist ? "disabled" : ""}`}
-                >
-                    {reg ? "REGISTER" : "LOGIN"}
-                </Submit>
+                <SubmitWrap>
+                    <Submit
+                        type="submit"
+                        className={`${errorsExist ? "disabled" : ""}`}
+                    >
+                        {reg ? "REGISTER" : "LOGIN"}
+                    </Submit>
+                </SubmitWrap>
 
                 {switchSign((styles, item) =>
                     item ? (
@@ -155,8 +157,9 @@ const FormComponent = ({ reg }: any) => {
                                         type="name"
                                         placeholder="João Ninguém"
                                         defaultValue=""
-                                        className={`${errors.name ? "invalid" : ""
-                                            }`}
+                                        className={`${
+                                            errors.name ? "invalid" : ""
+                                        }`}
                                     />
                                 </Field>
                             </FieldWrap>
@@ -229,10 +232,11 @@ const FormComponent = ({ reg }: any) => {
                                         type="password"
                                         placeholder="confirm your password"
                                         defaultValue=""
-                                        className={`${errors.confirmPassword
+                                        className={`${
+                                            errors.confirmPassword
                                                 ? "invalid"
                                                 : ""
-                                            }`}
+                                        }`}
                                     />
                                 </Field>
                             </FieldWrap>
@@ -265,10 +269,11 @@ const FormComponent = ({ reg }: any) => {
                                                 {...register("acceptTerms")}
                                                 type="checkbox"
                                                 id="acceptTerms"
-                                                className={`${errors.acceptTerms
+                                                className={`${
+                                                    errors.acceptTerms
                                                         ? "invalid"
                                                         : ""
-                                                    }`}
+                                                }`}
                                             />
                                             {error ? (
                                                 <Err>
@@ -322,6 +327,20 @@ const Div = styled(animated.div)`
     height: 40px;
 
     color: black;
+`;
+const SubmitWrap = styled.div`
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100vw;
+    height: 60px;
+    z-index: 10;
+
+    background: white;
+    box-shadow: 0px 0px 15px hsla(0, 0%, 0%, 0.3);
+
+    display: flex;
+    align-items: center;
 `;
 
 const ErrorWrap = styled(animated.div)`

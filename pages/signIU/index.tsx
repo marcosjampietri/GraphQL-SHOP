@@ -56,8 +56,8 @@ export default Auth;
 
 const Wrap = styled.section`
     position: relative;
-    width: 100%;
-    min-height: 100vh;
+    height: 100vh;
+    min-height: 600px;
     // max-width: 600px;
     margin: 0px auto;
     padding: 70px 0px;

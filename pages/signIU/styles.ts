@@ -99,9 +99,11 @@ export const Label = styled.div`
 `;
 
 export const Submit = styled.button`
+display: block;
     width: 100%;
+    max-width: 500px;
     height: 50px;
-    margin: 0px 0px;
+    margin: 0px auto;
 
     transition: 1s;
     border-radius: 5px;
