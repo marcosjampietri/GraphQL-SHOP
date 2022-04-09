@@ -104,7 +104,7 @@ const CartPage = () => {
                             <h3>Total Price</h3>
                             <h3>£ {itemsTotal}</h3>
                         </Total>
-                        <NextLink href="/checkout">
+                        <NextLink href="/signIU">
                             <a>
                                 <Pay>GO TO CHECKOUT</Pay>
                             </a>

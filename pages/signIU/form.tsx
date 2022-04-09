@@ -79,6 +79,7 @@ const FormComponent = ({ reg }: any) => {
             await createUser({
                 variables: { body: { name, email, password } },
             });
+            router.push(`/checkout`);
         } catch (err) {
             alert("something wrong is not right");
         }
@@ -91,6 +92,7 @@ const FormComponent = ({ reg }: any) => {
             await logUser({
                 variables: { body: { email, password } },
             });
+            router.push(`/checkout`);
         } catch (err) {
             alert("something wrong is not right");
         }
